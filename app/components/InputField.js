@@ -11,7 +11,7 @@ function InputField({ placeholder, style }) {
 
 const styles = StyleSheet.create({
   inputFieldContainer: {
-    width: "85%",
+    width: "84%",
     backgroundColor: colors.light,
     height: 52,
     borderRadius: 10,
