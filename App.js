@@ -1,6 +1,6 @@
 import React from "react";
-import { Text } from "react-native";
+import HomeScreen from "./app/screens/HomeScreen";
 
 export default function App() {
-  return <Text>Hello React Native</Text>;
+  return <HomeScreen />;
 }
