@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, Text, Image, TextInput } from "react-native";
+import { View, StyleSheet, Text, Image } from "react-native";
 import { RFPercentage } from "react-native-responsive-fontsize";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
@@ -9,6 +9,7 @@ import Colors from "./../config/Colors";
 //components
 import Screen from "./../components/Screen";
 import SearchInputField from "../components/SearchInputField";
+import CarouselCards from "../components/Carousel/CarouselCards";
 
 function HomeScreen(props) {
   return (
@@ -43,6 +44,21 @@ function HomeScreen(props) {
           />
         </View>
       </View>
+
+      <View style={styles.selectionTextContainer}>
+        <Text style={{ color: Colors.logoColor, fontSize: RFPercentage(2.5) }}>
+          Newest Foods
+        </Text>
+        <Text style={{ color: Colors.white, fontSize: RFPercentage(2.5) }}>
+          Best Recipes
+        </Text>
+        <Text style={{ color: Colors.white, fontSize: RFPercentage(2.5) }}>
+          Popular Ingredients
+        </Text>
+      </View>
+      <View style={styles.crousel}>
+        <CarouselCards />
+      </View>
     </Screen>
   );
 }
@@ -62,13 +78,14 @@ const styles = StyleSheet.create({
     color: Colors.white,
     fontSize: RFPercentage(3),
     left: RFPercentage(2.5),
+    top: RFPercentage(-1.7),
   },
   miniContainer: {
     flexDirection: "row",
     height: RFPercentage(10),
-    width: RFPercentage(100),
+    width: RFPercentage(30),
     alignItems: "center",
-    top: RFPercentage(3),
+    top: RFPercentage(1),
   },
   icons: {
     alignItems: "center",
@@ -82,6 +99,21 @@ const styles = StyleSheet.create({
     left: RFPercentage(2.4),
     marginHorizontal: RFPercentage(0.4),
   },
+  crousel: {
+    alignItems: "center",
+    justifyContent: "center",
+  },
+
+  selectionTextContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-evenly",
+    top: RFPercentage(3.4),
+  },
+  // selectionText: {
+  //   color: Colors.white,
+  //   fontSize: RFPercentage(2.5),
+  // },
 });
 
 export default HomeScreen;

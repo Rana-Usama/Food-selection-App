@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     backgroundColor: Colors.searchInput,
     width: RFPercentage(35),
-    height: RFPercentage(8.4),
+    height: RFPercentage(8),
     borderRadius: RFPercentage(2),
     left: RFPercentage(2),
   },

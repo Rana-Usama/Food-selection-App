@@ -1,5 +1,6 @@
 export default {
   primary: "#222222",
+  logoColor: "#bb6333",
   tab: "#373737",
   searchInput: "#2e2e2e",
   iconsColor: "#8b898a",
