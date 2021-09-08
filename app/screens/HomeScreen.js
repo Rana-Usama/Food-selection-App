@@ -1,5 +1,5 @@
-import React from "react";
-import { View, StyleSheet, Text, Image } from "react-native";
+import React, { useState } from "react";
+import { View, StyleSheet, Text, Image, TouchableOpacity } from "react-native";
 import { RFPercentage } from "react-native-responsive-fontsize";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
@@ -12,39 +12,56 @@ import SearchInputField from "../components/SearchInputField";
 import CarouselCards from "../components/Carousel/CarouselCards";
 
 function HomeScreen(props) {
+  const [searchInputField, setSearchInputField] = useState([
+    {
+      iconName: "search",
+      placeholder: "Search For Recipes",
+      value: "",
+    },
+  ]);
+
   return (
     <Screen style={styles.container}>
+      {/* Logo */}
       <Image source={require("../assets/logo.png")} style={styles.logo}></Image>
 
       <Text style={styles.mainTextHeading}>
         What do you want to cook today ?
       </Text>
 
+      {/* search input field and filter,search icons */}
       <View style={styles.miniContainer}>
-        <SearchInputField
-          iconName="search"
-          placeholder="Search For Recipes"
-        ></SearchInputField>
-
-        <View style={styles.icons}>
+        {searchInputField.map((item, i) => (
+          <SearchInputField
+            key={i}
+            iconName={item.iconName}
+            placeholder={item.placeholder}
+          />
+        ))}
+        <TouchableOpacity
+          style={[styles.icons, { marginLeft: RFPercentage(3) }]}
+        >
           <Feather
             name="sliders"
-            size={23}
+            size={RFPercentage(3)}
             color={Colors.white}
             onPress={() => console.log("First icon pressed")}
           />
-        </View>
+        </TouchableOpacity>
 
-        <View style={styles.icons}>
+        <TouchableOpacity
+          style={[styles.icons, { marginLeft: RFPercentage(1.9) }]}
+        >
           <MaterialCommunityIcons
             name="filter-variant"
-            size={29}
+            size={RFPercentage(4)}
             color={Colors.white}
             onPress={() => console.log("Filter icon pressed")}
           />
-        </View>
+        </TouchableOpacity>
       </View>
 
+      {/* Different foods and recipies Text buttons */}
       <View style={styles.selectionTextContainer}>
         <Text style={{ color: Colors.logoColor, fontSize: RFPercentage(2.5) }}>
           Newest Foods
@@ -56,6 +73,8 @@ function HomeScreen(props) {
           Popular Ingredients
         </Text>
       </View>
+
+      {/*Crouasel */}
       <View style={styles.crousel}>
         <CarouselCards />
       </View>
@@ -91,13 +110,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: Colors.primary,
-    width: RFPercentage(9),
-    height: RFPercentage(8.4),
+    width: RFPercentage(7),
+    height: RFPercentage(7),
     borderRadius: RFPercentage(2),
     borderWidth: RFPercentage(0.3),
     borderColor: Colors.searchInput,
-    left: RFPercentage(2.4),
-    marginHorizontal: RFPercentage(0.4),
   },
   crousel: {
     alignItems: "center",
@@ -110,10 +127,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
     top: RFPercentage(3.4),
   },
-  // selectionText: {
-  //   color: Colors.white,
-  //   fontSize: RFPercentage(2.5),
-  // },
 });
 
 export default HomeScreen;

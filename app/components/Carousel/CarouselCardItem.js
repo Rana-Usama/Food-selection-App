@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -8,14 +8,30 @@ import {
 } from "react-native";
 import { RFPercentage } from "react-native-responsive-fontsize";
 import { FontAwesome5 } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
 
 //config
 import Colors from "../../config/Colors";
 
-export const SLIDER_WIDTH = Dimensions.get("window").width + 5;
+export const SLIDER_WIDTH = Dimensions.get("window").width + 1;
 export const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.7);
 
-const CarouselCardItem = ({ item, index }) => {
+function CarouselCardItem({ item, index }) {
+  const stars = [
+    {
+      left: RFPercentage(3.5),
+    },
+    {
+      left: RFPercentage(4),
+    },
+    {
+      left: RFPercentage(4.4),
+    },
+    {
+      left: RFPercentage(4.6),
+    },
+  ];
+
   return (
     <View style={styles.container} key={index}>
       <ImageBackground source={{ uri: item.imgUrl }} style={styles.image}>
@@ -23,7 +39,7 @@ const CarouselCardItem = ({ item, index }) => {
           style={{
             backgroundColor: "black",
             height: RFPercentage(8),
-            width: RFPercentage(8),
+            width: RFPercentage(7),
             top: RFPercentage(3),
             left: RFPercentage(2),
             borderRadius: RFPercentage(1),
@@ -34,6 +50,9 @@ const CarouselCardItem = ({ item, index }) => {
         >
           <FontAwesome5 name="bookmark" size={24} color={Colors.white} />
         </View>
+        {/* <View> */}
+
+        {/* </View> */}
         <View
           style={{
             backgroundColor: "black",
@@ -46,12 +65,35 @@ const CarouselCardItem = ({ item, index }) => {
             opacity: 0.7,
           }}
         ></View>
+        <View style={{ flexDirection: "row", top: RFPercentage(5.7) }}>
+          {stars.map((item, i) => (
+            <AntDesign
+              key={i}
+              name="star"
+              size={17}
+              color={Colors.stars}
+              style={{ top: RFPercentage(16.5), left: item.left }}
+            />
+          ))}
+        </View>
+        <View>
+          <Text
+            style={{
+              color: Colors.white,
+              fontWeight: "bold",
+              top: RFPercentage(23),
+              left: RFPercentage(4),
+            }}
+          >
+            Tangrines Pancake
+          </Text>
+        </View>
       </ImageBackground>
       {/* <Text style={styles.header}>{item.title}</Text>
       <Text style={styles.body}>{item.body}</Text> */}
     </View>
   );
-};
+}
 const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.primary,

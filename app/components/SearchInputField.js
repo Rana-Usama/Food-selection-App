@@ -1,8 +1,10 @@
 import React from "react";
 import { View, StyleSheet, TextInput } from "react-native";
 import { EvilIcons } from "@expo/vector-icons";
-import Colors from "../config/Colors";
 import { RFPercentage } from "react-native-responsive-fontsize";
+
+//config
+import Colors from "../config/Colors";
 
 function SearchInputField({ iconName, placeholder }) {
   return (
@@ -39,6 +41,7 @@ const styles = StyleSheet.create({
     color: Colors.white,
     left: RFPercentage(2),
     fontSize: RFPercentage(2.5),
+    width: "100%",
   },
 });
 
